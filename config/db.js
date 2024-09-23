@@ -1,6 +1,5 @@
 const { Sequelize } = require('sequelize');
 
-// Create a new Sequelize instance for SQL Server connection
 const sequelize = new Sequelize('database_name', 'username', 'password', {
   host: 'localhost',
   dialect: 'mssql',
@@ -11,5 +10,6 @@ const sequelize = new Sequelize('database_name', 'username', 'password', {
     }
   }
 });
+
 
 module.exports = sequelize;
