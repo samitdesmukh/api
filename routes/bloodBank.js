@@ -68,3 +68,21 @@ router.put('/update/:id', async (req, res) => {
   }
 });
 
+// Delete a blood bank by ID
+router.delete('/delete/:id', async (req, res) => {
+  try {
+    const bloodBank = await BloodBank.findByPk(req.params.id);
+
+    if (!bloodBank) {
+      return res.status(404).json({ msg: 'Blood bank not found' });
+    }
+
+    await bloodBank.destroy();
+    res.json({ msg: 'Blood bank removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+module.exports = router;
